@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BaiThucHanh0703\\BaiThucHanh0703.csproj",
+      "projectUniqueName": "D:\\LeAnhTuanBTH\\BaiThucHanh0703\\BaiThucHanh0703.csproj",
       "projectName": "BaiThucHanh0703",
-      "projectPath": "D:\\BaiThucHanh0703\\BaiThucHanh0703.csproj",
+      "projectPath": "D:\\LeAnhTuanBTH\\BaiThucHanh0703\\BaiThucHanh0703.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\BaiThucHanh0703\\obj\\",
+      "outputPath": "D:\\LeAnhTuanBTH\\BaiThucHanh0703\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
