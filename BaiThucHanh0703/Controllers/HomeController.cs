@@ -13,6 +13,19 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    public IActionResult GPTB1()
+    {
+        return View();
+    }
+
+    [HttpPost]
+
+    public IActionResult GPTB1(string heSoA , string heSoB)
+    {
+        return View();
+    }
+    
+
     public IActionResult Index()
     {
         return View();

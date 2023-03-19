@@ -1,40 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
-
-namespace BaiThucHanh0703.Controllers
+namespace BAITHUCHANH0703.Models.Process
 {
-    public class StudentController : Controller
+    public class GiaiPhuongTrinh{
+
+    public string GiaiPhuongTrinhB1(double a , double b)
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-        [HttpPost]
-         public IActionResult Index(string FullName)
-        {
-            string strReturn = "Hello " + FullName;
-            //gui du lieu ve view
-            ViewBag.thongbao = strReturn;
-            return View();
-            //tra ve danh sach cac sinh vien trong Database
-        }
-         public IActionResult Tinhtong(string Number)
-        {
-            int so = Convert.ToInt32(Number);
-            int tong = 0;
-            while(so > 0)
-            {
-                tong = tong + so%10;
-                so = so/10;
-            }
-            ViewBag.Tinhtong ="Tong cac chu so cua so " + Number + "=" + tong;
-            return View();
-        }
-         public IActionResult Giaiptbac2()
-        {
-            return View();
-        }
-        [HttpPost]
-         public IActionResult Giaiptbac2(string hesoA, string hesoB, string hesoC)
+        double x =-b/a;
+        return "Nghiep cua phuong trinh x=" + x ;
+    }
+    
+     public string GiaiPhuongTrinhB2(string hesoA, string hesoB, string hesoC)
         {
             //khai bao bien
             double delta, x1, x2, a =0, b=0, c=0;
@@ -62,9 +36,7 @@ namespace BaiThucHanh0703.Controllers
                     ketqua = "Phuong trinh co 2 nghiem phan biet: x1= "+ x1 + ", x2= "+x2;
                 }
             }
-            ViewBag.message = ketqua;
-            return View();
+            return ketqua;
         }
     }
-
 }
