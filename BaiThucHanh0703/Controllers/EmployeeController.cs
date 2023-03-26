@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using BAITHUCHANH0703.Models;
 
 namespace BaiThucHanh0703.Controllers
 {
@@ -21,6 +22,22 @@ namespace BaiThucHanh0703.Controllers
         {
             return View();
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public IActionResult Create(Employee std)
+        {
+            string  kq = std.StudentCode + "-" + std.FullName +"-" + std.Address ;
+            ViewBag.mess=kq;
+            return View();
+        }
+
+       
     }
 
 }

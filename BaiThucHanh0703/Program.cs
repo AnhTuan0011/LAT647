@@ -1,4 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using BAITHUCHANH0703.Data;
+
+
+var builder = WebApplication.CreateBuilder(args); 
+
+//set connect to database
+ var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+ builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlite(connectionString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
