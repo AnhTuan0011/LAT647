@@ -5,7 +5,7 @@ namespace BaiThucHanh0703.Controllers
 {
     public class StudentController : Controller
     {
-        git
+        
         public IActionResult Index()
         {
             return View();
