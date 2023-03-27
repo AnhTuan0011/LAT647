@@ -5,3 +5,23 @@
   <input class="w3-input w3-border w3-round-large" type="text" name="FullName">
   <input type="submit" value="Send">
 </form> 
+
+
+@model IEnumerable<BaiThucHanh0703.Models.Student>
+  <p>
+    <a class="btn btn-success" asp-action="Create">Create a new Student</a>
+  </p>
+  <table> class="table table-all">
+    <tr>
+      <th>Student Id</th>
+      <th>Student Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>@Html.DisplayFor(m => item.StudentID)</td>
+        <td>@Html.DisplayFor(m => item.StudentName)</td>
+      </tr>
+    }
+
+  </table>

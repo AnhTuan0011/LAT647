@@ -5,6 +5,7 @@ namespace BaiThucHanh0703.Controllers
 {
     public class StudentController : Controller
     {
+        git
         public IActionResult Index()
         {
             return View();
@@ -18,7 +19,7 @@ namespace BaiThucHanh0703.Controllers
             return View();
             //tra ve danh sach cac sinh vien trong Database
         }
-         public IActionResult Tinhtong(string Number)
+         public IActionResult Tinhtong(string Number)                                                                                                                                                                         
         {
             int so = Convert.ToInt32(Number);
             int tong = 0;
