@@ -1,77 +1,112 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BTH2703.Models;
-using BTH2703.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using BTH2703.Data;
+using BTH2703.Models;
 
 namespace BTH2703.Controllers
-
 {
-    public class CustomerController : Controller{
+    public class CustomerController : Controller
+    {
         private readonly ApplicationDbContext _context;
-        public CustomerController (ApplicationDbContext context)
+
+        public CustomerController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        // GET: Customer
         public async Task<IActionResult> Index()
         {
-            var model = await _context.Customer.ToListAsync();
-            return View(model);
+              return _context.Customer != null ? 
+                          View(await _context.Customer.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Customer'  is null.");
         }
 
+        // GET: Customer/Details/5
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null || _context.Customer == null)
+            {
+                return NotFound();
+            }
+
+            var customer = await _context.Customer
+                .FirstOrDefaultAsync(m => m.CustomerID == id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(customer);
+        }
+
+        // GET: Customer/Create
         public IActionResult Create()
         {
             return View();
         }
-        [HttpPost]
 
-        public async Task<IActionResult> Create(Customer std)
+        // POST: Customer/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("CustomerID,CustomerName,CustomerAddress,CustomerPhone")] Customer customer)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                _context.Add(std);
+                _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            return View(std);
+            return View(customer);
         }
 
+        // GET: Customer/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if( id == null)
+            if (id == null || _context.Customer == null)
             {
-                return View("NotFound");
+                return NotFound();
             }
 
             var customer = await _context.Customer.FindAsync(id);
-            if(customer == null)
+            if (customer == null)
             {
-                return View("NotFound");
+                return NotFound();
             }
             return View(customer);
         }
+
+        // POST: Customer/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-// Edit
-        public async Task<IActionResult> Edit(string id, [Bind("CustomerID,CustomerName,CustomerAddress,CustomerPhone")] Customer std)
+        public async Task<IActionResult> Edit(string id, [Bind("CustomerID,CustomerName,CustomerAddress,CustomerPhone")] Customer customer)
         {
-            if(id != std.CustomerID)
+            if (id != customer.CustomerID)
             {
-                return View("NotFound");
+                return NotFound();
             }
-            if(ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(std);
+                    _context.Update(customer);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if(!CustomerExists(std.CustomerID))
+                    if (!CustomerExists(customer.CustomerID))
                     {
-                        return View("NotFound");
+                        return NotFound();
                     }
                     else
                     {
@@ -80,41 +115,49 @@ namespace BTH2703.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(std);
+            return View(customer);
         }
-        //Delelte
-            public async Task<IActionResult> Delete(string id)
+
+        // GET: Customer/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
-            if(id == null)
+            if (id == null || _context.Customer == null)
             {
-                return View("NotFound");
+                return NotFound();
             }
 
-            var std = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerID ==id);
-            if(std == null)
+            var customer = await _context.Customer
+                .FirstOrDefaultAsync(m => m.CustomerID == id);
+            if (customer == null)
             {
-                return View("NotFound");
+                return NotFound();
             }
-            return View(std);
+
+            return View(customer);
         }
+
+        // POST: Customer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-
-            var std = await _context.Customer.FindAsync(id);
-            _context.Customer.Remove(std);
+            if (_context.Customer == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Customer'  is null.");
+            }
+            var customer = await _context.Customer.FindAsync(id);
+            if (customer != null)
+            {
+                _context.Customer.Remove(customer);
+            }
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-
         private bool CustomerExists(string id)
         {
-            return _context.Customer.Any(e => e.CustomerID ==id);
+          return (_context.Customer?.Any(e => e.CustomerID == id)).GetValueOrDefault();
         }
-
-
     }
 }

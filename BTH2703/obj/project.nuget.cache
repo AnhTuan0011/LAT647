@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8SF7Fpce4Pe6w9XPzCEJz0XW12yLELnzQWuurFZCK607zLDqrazX0lxt86es9fwPoSzW+rrDqGp82JvBtGHS0w==",
+  "dgSpecHash": "AyTlzfi5Bu2plvsCT17nDsnZXM2bZuFhD9cuCod2xrWYGq79RlYUbMbj/aHo4Xq2vo4JCz0BH947noOlu9X1xA==",
   "success": true,
   "projectFilePath": "D:\\LeAnhTuanBTH\\BTH2703\\BTH2703.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.4\\microsoft.entityframeworkcore.relational.7.0.4.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.4\\microsoft.entityframeworkcore.sqlite.7.0.4.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.4\\microsoft.entityframeworkcore.sqlite.core.7.0.4.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.4\\microsoft.entityframeworkcore.tools.7.0.4.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTH2703.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230409165600_Create_Table_Customer")]
-    partial class Create_Table_Customer
+    [Migration("20230410114637_Create_Table_Employee")]
+    partial class Create_Table_Employee
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
