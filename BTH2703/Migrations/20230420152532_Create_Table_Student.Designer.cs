@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTH2703.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230410114243_Create_Table_Student")]
+    [Migration("20230420152532_Create_Table_Student")]
     partial class Create_Table_Student
     {
         /// <inheritdoc />
@@ -58,6 +58,20 @@ namespace BTH2703.Migrations
                     b.ToTable("Employee");
                 });
 
+            modelBuilder.Entity("BTH2703.Models.Faculty", b =>
+                {
+                    b.Property<string>("FacultyID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FacultyName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("FacultyID");
+
+                    b.ToTable("Faculty");
+                });
+
             modelBuilder.Entity("BTH2703.Models.Person", b =>
                 {
                     b.Property<string>("PersonID")
@@ -85,13 +99,30 @@ namespace BTH2703.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("FacultyID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("StudentName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("StudentID");
 
-                    b.ToTable("Students");
+                    b.HasIndex("FacultyID");
+
+                    b.ToTable("Student");
+                });
+
+            modelBuilder.Entity("BTH2703.Models.Student", b =>
+                {
+                    b.HasOne("BTH2703.Models.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Faculty");
                 });
 #pragma warning restore 612, 618
         }

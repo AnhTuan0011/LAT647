@@ -10,10 +10,11 @@ namespace BTH2703.Data;
         public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public DbSet<Student> Students {get; set;}
+        public DbSet<Student> Student{get; set;} = default!;
         public DbSet<Employee> Employee {get;set;  }
-        // public DbSet<Customer> Customer {get;set;  }
         public DbSet<Person> Person {get;set;}
-        // public DbSet<Customer> Customer {get;set;  }
         public DbSet<BTH2703.Models.Customer> Customer { get; set; } = default!;
+
+        public DbSet<BTH2703.Models.Faculty> Faculty { get; set; } = default!;
+
     }

@@ -2,6 +2,7 @@
 using BTH2703.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTH2703.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230417081806_Create_Table_Faculty")]
+    partial class Create_Table_Faculty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -96,30 +99,13 @@ namespace BTH2703.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FacultyID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("StudentName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("StudentID");
 
-                    b.HasIndex("FacultyID");
-
-                    b.ToTable("Student");
-                });
-
-            modelBuilder.Entity("BTH2703.Models.Student", b =>
-                {
-                    b.HasOne("BTH2703.Models.Faculty", "Faculty")
-                        .WithMany()
-                        .HasForeignKey("FacultyID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Faculty");
+                    b.ToTable("Students");
                 });
 #pragma warning restore 612, 618
         }

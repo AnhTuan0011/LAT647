@@ -5,7 +5,7 @@
 namespace BTH2703.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_Table_Student : Migration
+    public partial class Create_Foreignkey_Student : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,7 @@ namespace BTH2703.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+ 
         }
     }
 }
